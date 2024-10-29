@@ -19,13 +19,20 @@ public class Variables
 
     public static int Gems { get => PlayerPrefs.GetInt(nameof(Gems), 0); set => PlayerPrefs.SetInt(nameof(Gems), value); }
 
-    public static int OpenedLevels { get => PlayerPrefs.GetInt(nameof(OpenedLevels), 1); set => PlayerPrefs.SetInt(nameof(OpenedLevels), value); }
+    public static int OpenedLevels { get => PlayerPrefs.GetInt(nameof(OpenedLevels), 0); set => PlayerPrefs.SetInt(nameof(OpenedLevels), value); }
+
+    public static int Record0 { get => PlayerPrefs.GetInt(nameof(Record0), 0); set => PlayerPrefs.SetInt(nameof(Record0), value); }
+
+    public static int Record1 { get => PlayerPrefs.GetInt(nameof(Record1), 0); set => PlayerPrefs.SetInt(nameof(Record1), value); }
+
+    public static int Record2 { get => PlayerPrefs.GetInt(nameof(Record2), 0); set => PlayerPrefs.SetInt(nameof(Record2), value); }
+
 
     public static int[] Improvements
     {
         get => JsonUtility.FromJson<ImprovementsData>(
             PlayerPrefs.GetString(
-                nameof(Achievements),
+                nameof(Improvements),
                 JsonUtility.ToJson(new ImprovementsData())
                 )
             ).ImprovementsAmmount;
@@ -33,6 +40,8 @@ public class Variables
         set
         {
             Debug.Log("Set Improvements");
+
+
 
             PlayerPrefs.SetString(nameof(Improvements), JsonUtility.ToJson(new ImprovementsData(value)));
         }
@@ -42,7 +51,7 @@ public class Variables
     {
         get => JsonUtility.FromJson<AchievementsData>(
             PlayerPrefs.GetString(
-                nameof(Achievements), 
+                nameof(Achievements),
                 JsonUtility.ToJson(new AchievementsData())
                 )
             ).AchievemementsState;
@@ -77,7 +86,7 @@ public class Variables
 public class AchievementsData
 {
     public int[] AchievemementsState;
-    
+
     public AchievementsData(int[] achievementsState)
     {
         AchievemementsState = achievementsState;

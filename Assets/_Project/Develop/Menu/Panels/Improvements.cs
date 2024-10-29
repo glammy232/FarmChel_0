@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -52,6 +50,16 @@ public class Improvements : MonoBehaviour
 
         if (Variables.Coins < _costsOnEverythingLevel[Variables.Improvements[id]])
             return;
+
+        Variables.Coins -= _costsOnEverythingLevel[Variables.Improvements[id]];
+
+        var array = Variables.Improvements;
+
+        array[id]++;
+
+        Variables.Improvements = array;
+
+        UpdateUI();
     }
 
     private void UpdateUI()

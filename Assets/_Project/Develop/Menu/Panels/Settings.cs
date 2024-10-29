@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,7 +18,7 @@ public class Settings : MonoBehaviour
     }
 
     private void OnEnable() => UpdateUI();
-    
+
     public void SetSound()
     {
         if (Variables.Sound == 0)
